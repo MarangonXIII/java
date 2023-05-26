@@ -1,7 +1,8 @@
 public class App {
     public static void main(String[] args){
-        CANETA c1=new CANETA();
-        c1.setmodelo("BIC");
+        Caneta c1 = new Caneta("uniPIN","Preto",0.05);
         c1.status();
+        Caneta c2 = new Caneta("BIC","Azul",1.0);
+        c2.status();
     }
 }

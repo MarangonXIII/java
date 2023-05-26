@@ -1,23 +1,46 @@
-public class CANETA {
-    public String modelo;
-    private float ponta;
+public class Caneta {
+    private String modelo;
+    private double ponta;
+    private String cor;
+    private boolean tampada;
 
-    public String getmodelo(){
+    public Caneta(String m, String c, double p){ //Este é o método Construtor
+        this.tampar();
+        this.setPonta(p);
+        this.setModelo(m);
+        this.setCor(c);
+    }
+
+    public String getModelo(){
         return this.modelo;
     }
-    public void setmodelo(String m){
+    public void setModelo(String m){
         this.modelo = m;
     }
-    public float getponta(){
+    public double getPonta(){
         return this.ponta;
     }
-    public void setponta(float p){
+    public void setPonta(double p){
         this.ponta = p;
+    }
+    public String getCor(){
+        return this.cor;
+    }
+    public void setCor(String c){
+        this.cor = c;
+    }
+    public void tampar(){
+        this.tampada = true;
+    }
+    public void destampar(){
+        this.tampada = false;
     }
 
     public void status(){
         System.out.println("SOBRE A CANETA:");
-        System.out.println("Modelo: " + this.modelo);
-        System.out.println("Ponta: " + this.ponta);
+        System.out.println("Modelo: " + this.getModelo());
+        System.out.println("Ponta: " + this.getPonta());
+        System.out.println("Ponta: " + this.getCor());
+        System.out.println("Tampada: " + this.tampada);
     }
 }
