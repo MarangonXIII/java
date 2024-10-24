@@ -32,7 +32,7 @@ public class UsuarioDAO {
                 usuario.setSenha(rs.getString("senha"));
                 
                 usuarios.add(usuario);
-                System.out.println("\n\nNome: " + usuario.getNome() + "\nEmail: " + usuario.getEmail());
+                System.out.println("\n\nNome: " + usuario.getNome() + "\nEmail: " + usuario.getEmail() + "\nLogin: " + usuario.getLogin() + "\nSenha: " + usuario.getSenha());
         }
             rs.close();
             pst.close();
