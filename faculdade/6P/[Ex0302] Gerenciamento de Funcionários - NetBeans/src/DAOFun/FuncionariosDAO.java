@@ -10,8 +10,6 @@ import java.util.List;
 import ModelFun.Funcionarios;
 import java.sql.Date;
 
-
-
 public class FuncionariosDAO {
     private Connection con;
     
@@ -36,10 +34,10 @@ public class FuncionariosDAO {
                 
                 funcionarios.add(funcionario);
                 System.out.println("\n\nNome: " + funcionario.getNome() + "\nCargo: " + funcionario.getCargo() + "\nData da Contratação: " + funcionario.getDataContratacao() + "\nSalário: " + funcionario.getSalario());
-        }
+            }
             rs.close();
             pst.close();
-    }
+        }
         catch(SQLException e){
             System.out.println("Erro na consulta");
         }
