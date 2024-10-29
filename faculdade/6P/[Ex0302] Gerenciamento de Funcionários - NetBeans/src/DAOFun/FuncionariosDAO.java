@@ -33,7 +33,10 @@ public class FuncionariosDAO {
                 funcionario.setSalario(rs.getBigDecimal("salario"));
                 
                 funcionarios.add(funcionario);
-                System.out.println("\n\nNome: " + funcionario.getNome() + "\nCargo: " + funcionario.getCargo() + "\nData da Contratação: " + funcionario.getDataContratacao() + "\nSalário: " + funcionario.getSalario());
+                System.out.println("\n\nNome: " + funcionario.getNome() + 
+                                    "\nCargo: " + funcionario.getCargo() + 
+                                    "\nData da Contratação: " + funcionario.getDataContratacao() + 
+                                    "\nSalário: " + funcionario.getSalario());
             }
             rs.close();
             pst.close();
