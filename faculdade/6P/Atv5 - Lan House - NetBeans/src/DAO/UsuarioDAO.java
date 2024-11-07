@@ -15,7 +15,7 @@ public class UsuarioDAO {
         con = new ConexaoLanHouse().conectaBD();
         
         try{
-            String sql = "SELECT * FROM Usuario WHERE login=? AND senha=?";
+            String sql = "SELECT * FROM Usuario WHERE login=? AND senha=?"; //login=usuario & senha=admin
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, objusuario.getLogin());
             pstm.setString(2, objusuario.getSenha());

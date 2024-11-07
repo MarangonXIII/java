@@ -105,7 +105,7 @@ public class jfrLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoginActionPerformed
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        try{
+            try{
             String login, senha;
         
             login = jLogin.getText();
@@ -126,12 +126,20 @@ public class jfrLogin extends javax.swing.JFrame {
                 dispose();
             }else{
                 //enviar mensagem dizendo incorreto
-                JOptionPane.showMessageDialog(null, "Usuario ou Senha invalidos");
+                JOptionPane.showMessageDialog(null, "Usuário ou Senha Inválidos");
             }
 
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "jfrLogin: " + erro);
         }
+        
+        
+            /*String login, senha;
+        
+            login = jLogin.getText();
+            senha = jSenha.getText();
+            
+            Controller controller = new Controller(login, senha);*/
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {
