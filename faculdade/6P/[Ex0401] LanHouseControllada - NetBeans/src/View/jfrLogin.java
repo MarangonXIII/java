@@ -1,5 +1,7 @@
 package View;
 
+
+import Controller.Controller;
 import DAO.UsuarioDAO;
 import ModelUsuario.Usuario;
 import java.sql.ResultSet;
@@ -105,7 +107,16 @@ public class jfrLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoginActionPerformed
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        try{
+        
+        // Obtém o login e a senha digitados pelo usuário
+        String login = jLogin.getText();
+        String senha = new String(jSenha.getPassword());
+
+        // Instancia o Controller e chama o método autenticarUsuario, passando `this` como a janela atual
+        Controller controller = new Controller();
+        controller.autenticarUsuario(login, senha, this);
+        
+        /*try{
             String login, senha;
         
             login = jLogin.getText();
@@ -131,7 +142,7 @@ public class jfrLogin extends javax.swing.JFrame {
 
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "jfrLogin: " + erro);
-        }
+        }*/
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     public static void main(String args[]) {

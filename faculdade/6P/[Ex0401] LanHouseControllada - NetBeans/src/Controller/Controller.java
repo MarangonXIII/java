@@ -3,13 +3,14 @@ package Controller;
 import DAO.UsuarioDAO;
 import ModelUsuario.Usuario;
 import View.jfrTelaPrincipal;
+import javax.swing.JFrame;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Controller {
-
-    public Controller(String login, String senha) {
+    // Método de autenticação que recebe o login, senha e a janela de origem
+    public void autenticarUsuario(String login, String senha, JFrame fechajanela) {
         try{
             Usuario objusuario = new Usuario();
             objusuario.setLogin(login);
@@ -19,22 +20,18 @@ public class Controller {
             ResultSet rsusuariodao = objusuariodao.autenticacaoUsuario(objusuario);
 
             if(rsusuariodao.next()){
-                //chamar tela que eu quero abrir
+                // Abre a tela principal se a autenticação for bem-sucedida
                 jfrTelaPrincipal objjfrtelaprincipal = new jfrTelaPrincipal();
                 objjfrtelaprincipal.setVisible(true);
-                
-                dispose();
+                // Fecha a janela de login
+                fechajanela.dispose();
             }else{
-                //enviar mensagem dizendo incorreto
+                // Exibe mensagem de erro
                 JOptionPane.showMessageDialog(null, "Usuário ou Senha Inválidos");
             }
 
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "jfrLogin: " + erro);
         }
-    }
-
-    private void dispose() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
