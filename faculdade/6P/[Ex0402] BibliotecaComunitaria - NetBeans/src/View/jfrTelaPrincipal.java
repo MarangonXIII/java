@@ -1,5 +1,7 @@
 package View;
 
+import Controller.ControllerLivro;
+
 public class jfrTelaPrincipal extends javax.swing.JFrame {
 
     public jfrTelaPrincipal() {
@@ -14,9 +16,9 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jSair = new javax.swing.JMenu();
         jButtonSair = new javax.swing.JMenuItem();
-        jButtonUsuario = new javax.swing.JMenu();
         jLivro = new javax.swing.JMenu();
         jButtonLivro = new javax.swing.JMenuItem();
+        jButtonMostrarLivros = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -49,14 +51,6 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jSair);
 
-        jButtonUsuario.setText("Usuario");
-        jButtonUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUsuarioActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jButtonUsuario);
-
         jLivro.setText("Livro");
         jLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +65,14 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
             }
         });
         jLivro.add(jButtonLivro);
+
+        jButtonMostrarLivros.setText("Listar Livros");
+        jButtonMostrarLivros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMostrarLivrosActionPerformed(evt);
+            }
+        });
+        jLivro.add(jButtonMostrarLivros);
 
         jMenuBar1.add(jLivro);
 
@@ -91,10 +93,6 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonUsuarioActionPerformed
-
     private void jSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairActionPerformed
         
     }//GEN-LAST:event_jSairActionPerformed
@@ -108,10 +106,14 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLivroActionPerformed
-        // Abrir a tela de cadastro de livro
         jfrCadastroLivro cadastroLivro = new jfrCadastroLivro();
         cadastroLivro.setVisible(true);
     }//GEN-LAST:event_jButtonLivroActionPerformed
+
+    private void jButtonMostrarLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarLivrosActionPerformed
+        ControllerLivro controllerLivro = new ControllerLivro();
+        controllerLivro.mostrarLivros();
+    }//GEN-LAST:event_jButtonMostrarLivrosActionPerformed
 
     public static void main(String args[]) {
 
@@ -131,8 +133,6 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(jfrTelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new jfrTelaPrincipal().setVisible(true);
@@ -142,8 +142,8 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jButtonLivro;
+    private javax.swing.JMenuItem jButtonMostrarLivros;
     private javax.swing.JMenuItem jButtonSair;
-    private javax.swing.JMenu jButtonUsuario;
     private javax.swing.JMenu jLivro;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

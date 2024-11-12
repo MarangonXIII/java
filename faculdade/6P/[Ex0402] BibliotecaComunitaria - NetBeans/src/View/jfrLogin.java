@@ -102,12 +102,9 @@ public class jfrLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-
-        // Obtém o login e a senha digitados pelo usuário
         String login = jLogin.getText();
         String senha = new String(jSenha.getPassword());
 
-        // Instancia o ControllerUsuario e chama o método autenticarUsuario, passando `this` como a janela atual
         ControllerUsuario controller = new ControllerUsuario();
         controller.autenticarUsuario(login, senha, this);
     }//GEN-LAST:event_jButtonEntrarActionPerformed

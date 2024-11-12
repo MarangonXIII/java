@@ -112,20 +112,16 @@ public class jfrCadastroLivro extends javax.swing.JFrame {
 
     private void jButtonCadastrarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarLivroActionPerformed
         try {
-        // Capturando os dados dos campos de entrada
         String titulo = jTitulo.getText();
         String autor = jAutor.getText();
         String isbn = jISBN.getText();
-        
-        // Convertendo o texto da data para o formato java.sql.Date
-        String dataTexto = jAnoPublicacao.getText();
-        Date anoPublicacao = Date.valueOf(dataTexto); // Converte para java.sql.Date, que é aceito pelo banco de dados
 
-        // Usando o Controller para inserir o livro no banco
+        String dataTexto = jAnoPublicacao.getText();
+        Date anoPublicacao = Date.valueOf(dataTexto);
+
         ControllerLivro controller = new ControllerLivro();
         controller.inserirLivro(titulo, autor, anoPublicacao, isbn);
 
-        // Fechando a janela após a inserção
         this.dispose();
         
     } catch (IllegalArgumentException e) {
@@ -157,9 +153,6 @@ public class jfrCadastroLivro extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(jfrCadastroLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new jfrCadastroLivro().setVisible(true);
