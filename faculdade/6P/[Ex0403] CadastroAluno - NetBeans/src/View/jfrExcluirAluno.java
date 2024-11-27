@@ -89,6 +89,9 @@ public class jfrExcluirAluno extends javax.swing.JFrame {
 
             // Limpar o campo de ID após a exclusão
             jIDAluno.setText("");
+            
+            // Fechar a janela atual e voltar para a tela principal
+            this.dispose();
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, insira um ID válido.");

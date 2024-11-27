@@ -105,6 +105,9 @@ public class jfrProcurarIDAluno extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Nenhum aluno encontrado com o ID informado.");
             }
+            
+            // Fechar a janela atual e voltar para a tela principal
+            this.dispose();
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "ID inválido! Por favor, insira um número.");

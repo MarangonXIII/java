@@ -108,7 +108,6 @@ public class jfrAdicionarAluno extends javax.swing.JFrame {
         controller.addAluno(nome, email, idade);
 
         // Fechando a janela após a inserção
-        JOptionPane.showMessageDialog(this, "Aluno cadastrado com sucesso!");
         this.dispose();
 
     } catch (NumberFormatException e) {

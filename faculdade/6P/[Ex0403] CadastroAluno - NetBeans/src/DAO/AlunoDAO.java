@@ -77,19 +77,31 @@ public class AlunoDAO {
     
     public void atualizarAluno(Aluno aluno) throws SQLException {
         Connection con = new ConexaoAluno().conectaBD();
-        String sql = "UPDATE Aluno SET nome = ?, email = ?, idade = ? WHERE id = ?";
-        
-        try (PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, aluno.getNome());
-            pst.setString(2, aluno.getEmail());
-            pst.setInt(3, aluno.getIdade());
-            pst.setInt(4, aluno.getId());
-            pst.executeUpdate();
+        String verificarSql = "SELECT COUNT(*) AS total FROM Aluno WHERE id = ?";
+        String atualizarSql = "UPDATE Aluno SET nome = ?, email = ?, idade = ? WHERE id = ?";
+
+        try (PreparedStatement verificarStmt = con.prepareStatement(verificarSql)) {
+            // Verificar se o ID existe no banco de dados
+            verificarStmt.setInt(1, aluno.getId());
+            ResultSet rs = verificarStmt.executeQuery();
+            if (rs.next() && rs.getInt("total") == 0) {
+                // ID não encontrado no banco de dados
+                throw new SQLException("Aluno com ID " + aluno.getId() + " não encontrado. Por favor, insira um ID válido.");
+            }
+        }
+
+        try (PreparedStatement atualizarStmt = con.prepareStatement(atualizarSql)) {
+            // Atualizar o aluno no banco de dados
+            atualizarStmt.setString(1, aluno.getNome());
+            atualizarStmt.setString(2, aluno.getEmail());
+            atualizarStmt.setInt(3, aluno.getIdade());
+            atualizarStmt.setInt(4, aluno.getId());
+            atualizarStmt.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException("Erro ao atualizar o aluno: " + e.getMessage());
         }
     }
-    
+
     public Aluno excluirAluno(int id) throws SQLException {
         Connection con = new ConexaoAluno().conectaBD();
         String sql = "DELETE FROM Aluno WHERE id = ?";

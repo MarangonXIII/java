@@ -15,7 +15,7 @@ public class ControllerAluno {
 
         AlunoDAO alunoDAO = new AlunoDAO();
         boolean sucesso = alunoDAO.addAluno(aluno);
-
+        
         if (sucesso) {
             JOptionPane.showMessageDialog(null, "Aluno adicionado com sucesso!");
         } else {
@@ -26,13 +26,11 @@ public class ControllerAluno {
     public void mostrarAlunos() {
         AlunoDAO alunoDAO = new AlunoDAO();
         List<Aluno> alunos = alunoDAO.listarAlunos();
-
         if (alunos.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum aluno cadastrado.");
             return;
         }
 
-        // Configurando os dados para exibir na tabela
         String[] colunas = {"ID", "Nome", "Email", "Idade"};
         Object[][] dados = new Object[alunos.size()][4];
 
@@ -43,12 +41,9 @@ public class ControllerAluno {
             dados[i][2] = aluno.getEmail();
             dados[i][3] = aluno.getIdade();
         }
-
         JTable tabelaAlunos = new JTable(dados, colunas);
         JScrollPane scrollPane = new JScrollPane(tabelaAlunos);
         scrollPane.setPreferredSize(new java.awt.Dimension(500, 200));
-
-        // Exibindo a tabela em um JOptionPane
         JOptionPane.showMessageDialog(null, scrollPane, "Alunos Cadastrados", JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -58,18 +53,15 @@ public class ControllerAluno {
     }
     
     private final AlunoDAO alunoDAO = new AlunoDAO();
-
     public void atualizarAluno(int id, String nome, String email, int idade) throws Exception {
         if (nome.isEmpty() || email.isEmpty() || idade <= 0) {
             throw new Exception("Todos os campos devem ser preenchidos corretamente.");
         }
-
         Aluno aluno = new Aluno();
         aluno.setId(id);
         aluno.setNome(nome);
         aluno.setEmail(email);
         aluno.setIdade(idade);
-
         alunoDAO.atualizarAluno(aluno);
     }
     

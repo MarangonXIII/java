@@ -2,6 +2,8 @@ package View;
 
 import Controller.ControllerAluno;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
+
 
 public class jfrAtualizarAluno extends javax.swing.JFrame {
 
@@ -133,8 +135,14 @@ public class jfrAtualizarAluno extends javax.swing.JFrame {
             jNomeAluno.setText("");
             jEmail.setText("");
             jIdade.setText("");
+
+            // Fechar a janela atual e voltar para a tela principal
+            this.dispose(); // Fecha a janela atual
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, insira um ID e uma idade válidos.");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage()); // Exibe mensagem de erro do DAO
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar o cadastro: " + e.getMessage());
         }
