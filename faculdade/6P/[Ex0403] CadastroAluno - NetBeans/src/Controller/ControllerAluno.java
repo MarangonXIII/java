@@ -56,4 +56,27 @@ public class ControllerAluno {
         AlunoDAO alunoDAO = new AlunoDAO();
         return alunoDAO.buscarPorID(id);
     }
+    
+    private final AlunoDAO alunoDAO = new AlunoDAO();
+
+    public void atualizarAluno(int id, String nome, String email, int idade) throws Exception {
+        if (nome.isEmpty() || email.isEmpty() || idade <= 0) {
+            throw new Exception("Todos os campos devem ser preenchidos corretamente.");
+        }
+
+        Aluno aluno = new Aluno();
+        aluno.setId(id);
+        aluno.setNome(nome);
+        aluno.setEmail(email);
+        aluno.setIdade(idade);
+
+        alunoDAO.atualizarAluno(aluno);
+    }
+    
+    public void excluirAluno(int id) throws Exception {
+        if (id <= 0) {
+            throw new Exception("ID inválido. Por favor, insira um ID válido.");
+        }
+        alunoDAO.excluirAluno(id);
+    }
 }

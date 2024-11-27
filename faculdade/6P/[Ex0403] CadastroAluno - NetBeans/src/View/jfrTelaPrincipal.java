@@ -20,6 +20,8 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
         jButtonAddAluno = new javax.swing.JMenuItem();
         jButtonListarAlunos = new javax.swing.JMenuItem();
         jButtonProcurarID = new javax.swing.JMenuItem();
+        jAtualizarAlunos = new javax.swing.JMenuItem();
+        jExcluirAluno = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -73,6 +75,22 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jButtonProcurarID);
 
+        jAtualizarAlunos.setText("Atualizar Aluno");
+        jAtualizarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAtualizarAlunosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jAtualizarAlunos);
+
+        jExcluirAluno.setText("Excluir Aluno");
+        jExcluirAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jExcluirAlunoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jExcluirAluno);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -111,6 +129,16 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
         procuraIDAluno.setVisible(true);
     }//GEN-LAST:event_jButtonProcurarIDActionPerformed
 
+    private void jAtualizarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAtualizarAlunosActionPerformed
+        jfrAtualizarAluno atualizarAluno = new jfrAtualizarAluno();
+        atualizarAluno.setVisible(true);
+    }//GEN-LAST:event_jAtualizarAlunosActionPerformed
+
+    private void jExcluirAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExcluirAlunoActionPerformed
+        jfrExcluirAluno excluirAluno = new jfrExcluirAluno();
+        excluirAluno.setVisible(true);
+    }//GEN-LAST:event_jExcluirAlunoActionPerformed
+
     public static void main(String args[]) {
 
         try {
@@ -138,10 +166,12 @@ public class jfrTelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jAtualizarAlunos;
     private javax.swing.JMenuItem jButtonAddAluno;
     private javax.swing.JMenuItem jButtonListarAlunos;
     private javax.swing.JMenuItem jButtonProcurarID;
     private javax.swing.JMenuItem jButtonSair;
+    private javax.swing.JMenuItem jExcluirAluno;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

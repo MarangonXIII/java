@@ -49,7 +49,6 @@ public class AlunoDAO {
         } catch (SQLException e) {
             System.out.println("Erro ao listar alunos: " + e.getMessage());
         }
-
         return alunos;
     }
     
@@ -72,6 +71,38 @@ public class AlunoDAO {
             }
         } catch (SQLException e) {
             throw new Exception("Erro ao buscar o aluno por ID: " + e.getMessage());
+        }
+        return aluno;
+    }
+    
+    public void atualizarAluno(Aluno aluno) throws SQLException {
+        Connection con = new ConexaoAluno().conectaBD();
+        String sql = "UPDATE Aluno SET nome = ?, email = ?, idade = ? WHERE id = ?";
+        
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, aluno.getNome());
+            pst.setString(2, aluno.getEmail());
+            pst.setInt(3, aluno.getIdade());
+            pst.setInt(4, aluno.getId());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Erro ao atualizar o aluno: " + e.getMessage());
+        }
+    }
+    
+    public Aluno excluirAluno(int id) throws SQLException {
+        Connection con = new ConexaoAluno().conectaBD();
+        String sql = "DELETE FROM Aluno WHERE id = ?";
+        Aluno aluno = null;
+        
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, id);
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new SQLException("Nenhum aluno encontrado com o ID especificado.");
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Erro ao excluir o aluno: " + e.getMessage());
         }
         return aluno;
     }
